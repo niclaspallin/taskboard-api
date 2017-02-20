@@ -12,6 +12,7 @@ gulp.task('serve', function() {
     script: 'app.js',
     ext: 'js html',
     delayTime: 1,
+    ignore: ['./test/'],
     env: {
       'NODE_ENV': 'development',
       'PORT': 3000
