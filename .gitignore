@@ -2,9 +2,6 @@
 node_modules
 npm-debug.log
 
-# App
-test
-
 # VS Code
 .vscode
 .jsbeautifyrc
