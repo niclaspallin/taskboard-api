@@ -1,23 +1,28 @@
 {
-    "name": "taskboard-server",
-    "version": "1.0.0",
-    "description": "Taskboard server",
-    "main": "index.js",
-    "scripts": {
-        "test": "mocha",
-        "test:watch": "mocha --watch",
-        "start": "gulp serve"
-    },
-    "author": "Niclas Pallin",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.15.2",
-        "express": "^4.14.0"
-    },
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-load-plugins": "^1.4.0",
-        "gulp-nodemon": "^2.2.1",
-        "mocha": "^3.2.0"
-    }
+  "name": "taskboard-server",
+  "version": "1.0.0",
+  "description": "Taskboard server",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register",
+    "test:watch": "npm run test -- --watch",
+    "start": "nodemon ./src/app.js --exec babel-node"
+  },
+  "author": "Niclas Pallin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-preset-es2015": "^6.22.0",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-nodemon": "^2.2.1",
+    "mocha": "^3.2.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
 }

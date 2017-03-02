@@ -1,14 +1,12 @@
-var assert = require('assert');
+import assert from 'assert';
 
-var User = function(args) {
+export default function(args) {
   assert.ok(args.email, 'Email is required');
 
-  var user = {};
+  let user = {};
 
   user.email = args.email;
   user.createdAt = args.createdAt || new Date();
 
   return user;
 };
-
-module.exports = User;
