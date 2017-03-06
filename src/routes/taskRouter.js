@@ -1,16 +1,17 @@
 import express from 'express';
 let router = express.Router();
 import taskService from '../services/taskService';
-import {
-  API_ROOT
-} from '../store/constants';
 
 router.get('/', function(req, res) {
-  res.json(taskService.getTasks());
+  taskService.getTasks().then(result => {
+    res.json(result);
+  });
 });
 
 router.get('/:id', function(req, res) {
-  res.json(taskService.getTask(parseInt(req.params.id)));
+  taskService.getTask(parseInt(req.params.id)).then(result => {
+    res.json(result);
+  });
 });
 
 export default router;

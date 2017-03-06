@@ -1,22 +1,23 @@
-import {
-  categories
-} from '../store/mockData';
-import {
-  API_ROOT
-} from '../store/constants';
+import {API_ROOT} from '../store/constants';
+import knex from '../db';
 
-module.exports = (() => {
+export default (() => {
   let getCategories = () => {
-    categories.forEach(category => {
-      category._link = API_ROOT + category.id;
-    });
-    return categories;
+    return knex.select(['id', 'name'])
+      .from('category')
+      .then(categories => {
+        return categories.map(cat => {
+          cat._link = API_ROOT + cat.id;
+          return cat;
+        });
+      });
   };
 
-  let getCategory = id => categories.filter(
-    function(category) {
-      return category.id === id;
-    })[0];
+  let getCategory = id => {
+    return knex.select(['id', 'name'])
+      .from('category')
+      .where('id', id);
+  };
 
   return {
     getCategories: getCategories,

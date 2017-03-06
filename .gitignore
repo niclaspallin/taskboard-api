@@ -1,8 +1,13 @@
-# Node
 node_modules
 npm-debug.log
 
-# VS Code
 .vscode
 .jsbeautifyrc
+
+migrations
+seeds
+knexfile.js
+
 .babelrc
+.eslintrc
+.eslintrc.json

@@ -1,21 +1,24 @@
-import {
-  tasks
-} from '../store/mockData';
-import {
-  API_ROOT
-} from '../store/constants';
+import {API_ROOT} from '../store/constants';
+import knex from '../db';
 
-module.exports = (function() {
+export default (() => {
   let getTasks = () => {
-    tasks.forEach(task => {
-      task._link = API_ROOT + task.id;
-    });
-    return tasks;
+    return knex.select(['id', 'name', 'completed', 'starts_at', 'updated_at', 'category_id'])
+      .from('task')
+      .then(tasks => {
+        return tasks.map(task => {
+          task._link = API_ROOT + task.id;
+          return task;
+        });
+      });
   };
 
-  let getTask = id => tasks.filter(function(task) {
-    return task.id === id;
-  })[0];
+  let getTask = id => {
+    return knex.select()
+      .where('id', id)
+      .limit(1)
+      .from('task');
+  };
 
   return {
     getTasks: getTasks,

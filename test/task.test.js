@@ -1,5 +1,6 @@
 import assert from 'assert';
 import Task from '../src/models/task';
+import taskService from '../src/services/taskService';
 
 describe('Task', () => {
   let task = {};
@@ -8,6 +9,10 @@ describe('Task', () => {
     task = new Task({
       name: 'Task #1'
     });
+  });
+
+  it('returns cats', () => {
+    assert(taskService.getTasks().length > 0, 'Tasks length > 0');
   });
 
   it('Name is Task #1', () => {
