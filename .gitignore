@@ -3,6 +3,7 @@ npm-debug.log
 
 .vscode
 .jsbeautifyrc
+jsconfig.json
 
 migrations
 seeds

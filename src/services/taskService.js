@@ -17,11 +17,12 @@ export default (() => {
     return knex.select()
       .where('id', id)
       .limit(1)
-      .from('task');
+      .from('task')
+      .then(tasks => tasks[0]);
   };
 
   return {
-    getTasks: getTasks,
-    getTask: getTask
+    all: getTasks,
+    find: getTask
   };
 })();

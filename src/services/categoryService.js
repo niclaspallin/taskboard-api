@@ -16,11 +16,12 @@ export default (() => {
   let getCategory = id => {
     return knex.select(['id', 'name'])
       .from('category')
-      .where('id', id);
+      .where('id', id)
+      .then(categories => categories[0]);
   };
 
   return {
-    getCategories: getCategories,
-    getCategory: getCategory
+    all: getCategories,
+    find: getCategory
   };
 })();
