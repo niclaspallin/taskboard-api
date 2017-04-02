@@ -17,4 +17,18 @@ describe('Category', () => {
       });
   });
 
+  it('creates a new category', () => {
+    return categoryService.create({name: 'New cat'})
+      .then(newCat => {
+        assert.equal(newCat.name, 'New cat');
+      });
+  });
+
+  it('updates category with id of 1', () => {
+    return categoryService.update(1, {name: 'updated cat'})
+      .then(updateCount => {
+        assert.equal(updateCount, 1);
+      });
+  });
+
 });

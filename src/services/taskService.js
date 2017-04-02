@@ -1,28 +1,29 @@
-import {API_ROOT} from '../store/constants';
-import knex from '../db';
+import Task from '../models/task';
 
 export default (() => {
-  let getTasks = () => {
-    return knex.select(['id', 'name', 'completed', 'starts_at', 'updated_at', 'category_id'])
-      .from('task')
-      .then(tasks => {
-        return tasks.map(task => {
-          task._link = API_ROOT + task.id;
-          return task;
-        });
-      });
+  
+  let all = () => {
+    return Task.all();
   };
 
-  let getTask = id => {
-    return knex.select()
-      .where('id', id)
-      .limit(1)
-      .from('task')
-      .then(tasks => tasks[0]);
+  let find = (id) => {
+    return Task.findById(id);
+  };
+
+  let create = (data, ) => {
+    let task = new Task(data);
+    return task.create();
+  };
+
+  let update = (id, data) => {
+    let task = new Task(data);
+    return task.update(id);
   };
 
   return {
-    all: getTasks,
-    find: getTask
+    all,
+    find,
+    create,
+    update
   };
 })();

@@ -1,27 +1,29 @@
-import {API_ROOT} from '../store/constants';
-import knex from '../db';
+import Category from '../models/category';
 
 export default (() => {
-  let getCategories = () => {
-    return knex.select(['id', 'name'])
-      .from('category')
-      .then(categories => {
-        return categories.map(cat => {
-          cat._link = API_ROOT + cat.id;
-          return cat;
-        });
-      });
+
+  let all = () => {
+    return Category.all();
   };
 
-  let getCategory = id => {
-    return knex.select(['id', 'name'])
-      .from('category')
-      .where('id', id)
-      .then(categories => categories[0]);
+  let find = (id) => {
+    return Category.findById(id);
+  };
+
+  let create = (data) => {
+    let category = new Category(data);
+    return category.create();
+  };
+
+  let update = (id, data) => {
+    let category = new Category(data);
+    return category.update(id);
   };
 
   return {
-    all: getCategories,
-    find: getCategory
+    all,
+    find,
+    create,
+    update
   };
 })();

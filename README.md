@@ -11,8 +11,8 @@
 * GET api/categories/:id - Get specific category
 
 ## TODO
-- [ ] Get data from a real store (sql database / document database)
-- [ ] Fulfill core RESTful concepts
+- [x] Get data from a real store (sql database / document database)
+- [ ] Implement core RESTful concepts
  - [ ] Interaction with resources through verbs like POST, GET, PUT, DELETE, (PATCH)
  - [ ] Uniform interface
  - [ ] [HATEOAS (Hypermedia As The Engine of Application State)](https://en.wikipedia.org/wiki/HATEOAS)

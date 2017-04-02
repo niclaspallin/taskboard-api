@@ -17,4 +17,18 @@ describe('Task', () => {
       });
   });
 
+  it('creates a new task', () => {
+    return taskService.create({name: 'New task'})
+      .then(newTask => {
+        assert.equal(newTask.name, 'New task');
+      });
+  });
+
+  it('updates task with id of 1', () => {
+    return taskService.update(1, {name: 'updated task'})
+      .then(updateCount => {
+        assert.equal(updateCount, 1);
+      });
+  });
+
 });
