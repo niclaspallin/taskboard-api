@@ -50,4 +50,16 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// DELETE /tasks/1
+router.delete('/:id', (req, res) => {
+  categoryService.delete(+req.params.id)
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      res.statusCode = 400;
+      res.send(err);
+    });
+});
+
 export default router;

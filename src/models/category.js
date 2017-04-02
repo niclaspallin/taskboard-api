@@ -38,4 +38,10 @@ Category.findById = (id) => {
     .then(result => result[0]);
 };
 
+Category.delete = id => {
+  return knex('category')
+    .where('id', id)
+    .del();
+};
+
 export default Category;

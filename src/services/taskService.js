@@ -20,10 +20,13 @@ export default (() => {
     return task.update(id);
   };
 
+  let del = id => Task.delete(id);
+
   return {
     all,
     find,
     create,
-    update
+    update,
+    delete: del
   };
 })();

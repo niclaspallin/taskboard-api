@@ -43,4 +43,10 @@ Task.findById = id => {
     .then(result => result[0]);
 };
 
+Task.delete = id => {
+  return knex('task')
+    .where('id', id)
+    .del();
+};
+
 export default Task;

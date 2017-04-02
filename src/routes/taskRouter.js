@@ -37,9 +37,22 @@ router.post('/', (req, res) => {
       res.send(err);
     });
 });
+
 // PUT /tasks/1
 router.put('/:id', (req, res) => {
   taskService.update(+req.params.id)
+    .then(result => {
+      res.send(result);
+    })
+    .catch(err => {
+      res.statusCode = 400;
+      res.send(err);
+    });
+});
+
+// DELETE /tasks/1
+router.delete('/:id', (req, res) => {
+  taskService.delete(+req.params.id)
     .then(result => {
       res.send(result);
     })

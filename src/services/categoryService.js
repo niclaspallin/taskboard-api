@@ -20,10 +20,13 @@ export default (() => {
     return category.update(id);
   };
 
+  let del = id => Category.delete(id);
+
   return {
     all,
     find,
     create,
-    update
+    update,
+    delete: del
   };
 })();
