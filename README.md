@@ -18,6 +18,8 @@
  - [ ] [HATEOAS (Hypermedia As The Engine of Application State)](https://en.wikipedia.org/wiki/HATEOAS)
 ## Endpoints
 - [x] POST api/tasks - Create new task
-- [ ] PUT api/tasks/:id - Update task
+- [x] PUT api/tasks/:id - Update task
+- [x] DELETE api/categories/:id - Delete task
 - [x] POST api/categories - Create new category
-- [ ] PUT api/categories/:id - Update category
+- [x] PUT api/categories/:id - Update category
+- [x] DELETE api/categories/:id - Delete category
