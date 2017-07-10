@@ -11,12 +11,13 @@ class Category {
 
   create() {
     return knex.insert(this.data).into('category')
-      .then(id => Category.findById(id));
+      .then(result => Category.findById(result[0]));
   }
 
   update(id) {
     return knex('task').update(this.data)
-      .where('id', id);
+      .where('id', id)
+      .then(() => Category.findById(id));
   }
 }
 

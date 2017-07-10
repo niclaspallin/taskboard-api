@@ -12,31 +12,28 @@ class Task {
   create() {
    return knex.insert(this.data)
       .into('task')
-      .then(id => {
-        return Task.findById(id);
-      });
+      .then(result => Task.findById(result[0]));
   }
 
   update(id) {
     return knex('task')
       .update(this.data)
-      .where('id', id);
+      .where('id', id)
+      .then(() => Task.findById(id));
   }
 }
 
 Task.all = () => {
   return knex.select(_defaultSelect)
     .from('task')
-    .then(tasks => {
-      return tasks;
-    })
+    .then(tasks => tasks)
     .each(task => {
       task._link = API_ROOT + task.id;
     });
 };
 
 Task.findById = id => {
-  return knex.select()
+  return knex.select(_defaultSelect)
     .where('id', id)
     .limit(1)
     .from('task')

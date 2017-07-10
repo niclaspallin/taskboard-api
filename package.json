@@ -6,6 +6,10 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
     "test:watch": "npm run test -- --watch",
+    "migrate": "knex migrate:latest --knexfile ./src/db/knexfile.js",
+    "migrate:test": "knex migrate:latest --knexfile ./src/db/knexfile.js --env test",
+    "seed": "knex seed:run --knexfile ./src/db/knexfile.js",
+    "seed:test": "knex seed:run --knexfile ./src/db/knexfile.js --env test",
     "start": "nodemon ./src/app.js --exec babel-node"
   },
   "author": "Niclas Pallin",
@@ -28,6 +32,7 @@
     "gulp-load-plugins": "^1.4.0",
     "gulp-nodemon": "^2.2.1",
     "mocha": "^3.2.0",
+    "sqlite3": "^3.1.8",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   }

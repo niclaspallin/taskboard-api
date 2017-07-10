@@ -1,65 +1,31 @@
 import express from 'express';
 let router = express.Router();
 import taskService from '../services/taskService';
+import responseUtils from '../utils/responseUtils';
 
 // GET /tasks
-router.get('/', function(req, res) {
-  taskService.all()
-    .then(tasks => {
-      res.send(tasks);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.json(err);
-    });
+router.get('/', (req, res) => {
+  responseUtils.send(res, taskService.all());
 });
 
 // GET /tasks/1
-router.get('/:id', function(req, res) {
-  taskService.find(+req.params.id)
-    .then(task => {
-      res.send(task);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+router.get('/:id', (req, res) => {
+  responseUtils.send(res, taskService.find(+req.params.id, req.body));
 });
 
 // POST /tasks
 router.post('/', (req, res) => {
-  taskService.create(req.body)
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+  responseUtils.send(res, taskService.create(req.body));
 });
 
 // PUT /tasks/1
 router.put('/:id', (req, res) => {
-  taskService.update(+req.params.id)
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+  responseUtils.send(res, taskService.update(+req.params.id, req.body));
 });
 
 // DELETE /tasks/1
 router.delete('/:id', (req, res) => {
-  taskService.delete(+req.params.id)
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+  responseUtils.send(res, taskService.delete(+req.params.id, req.body));
 });
 
 export default router;

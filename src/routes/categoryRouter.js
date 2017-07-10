@@ -1,65 +1,31 @@
 import express from 'express';
 import categoryService from '../services/categoryService';
 let router = express.Router();
+import responseUtils from '../utils/responseUtils';
 
 // GET /categories
 router.get('/', (req, res) => {
-  categoryService.all()
-    .then((categories) => {
-      res.json(categories);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+  responseUtils.send(res, categoryService.all());
 });
 
 // GET /categories/1
 router.get('/:id', (req, res) => {
-  categoryService.find(+req.params.id)
-    .then(category => {
-      res.json(category);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+  responseUtils.send(res, categoryService.find(+req.params.id));
 });
 
 // POST /categories
 router.post('/', (req, res) => {
-  categoryService.create(req.body)
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.json(err);
-    });
+  responseUtils.send(res, categoryService.create(req.body));
 });
 
 // PUT /categories/1
 router.put('/:id', (req, res) => {
-  categoryService.update(+req.params.id, req.body)
-    .then(result => {
-      res.json(result);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.json(err);
-    });
+  responseUtils.send(res, categoryService.update(+req.params.id, req.body));
 });
 
 // DELETE /tasks/1
 router.delete('/:id', (req, res) => {
-  categoryService.delete(+req.params.id)
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      res.statusCode = 400;
-      res.send(err);
-    });
+  responseUtils.send(res, categoryService.delete(+req.params.id));
 });
 
 export default router;
