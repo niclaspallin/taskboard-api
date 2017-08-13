@@ -28,7 +28,7 @@ Category.all = () => {
       return categories;
     })
     .each(cat => {
-      cat._link = API_ROOT + cat.id;
+      cat._link = API_ROOT + '/categories/' + cat.id;
     });
 };
 

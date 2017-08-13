@@ -28,7 +28,7 @@ Task.all = () => {
     .from('task')
     .then(tasks => tasks)
     .each(task => {
-      task._link = API_ROOT + task.id;
+      task._link = API_ROOT + '/tasks/' + task.id;
     });
 };
 
