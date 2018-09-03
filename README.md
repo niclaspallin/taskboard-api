@@ -1,25 +1,25 @@
 # Taskboard api
 
-## Routes
+## Endpoints
 
 ### Task
-* GET api/tasks - Get all tasks
-* GET api/tasks/:id - Get specific task
+* GET     api/tasks     - Get all tasks
+* GET     api/tasks/:id - Get specific task
+* POST    api/tasks     - Create new task
+* PUT     api/tasks     - Update task
+* DELETE  api/task/:id  - Delete task
+
 
 ### Category
-* GET api/categories - Get all categories
-* GET api/categories/:id - Get specific category
+* GET    api/categories     - Get all categories
+* GET    api/categories/:id - Get specific category
+* POST   api/categories     - Create new category
+* PUT    api/categories/:id - Update category
+* DELETE api/categories/:id - Delete category
 
 ## TODO
 - [x] Get data from a real store (sql database / document database)
 - [ ] Implement core RESTful concepts
- - [ ] Interaction with resources through verbs like POST, GET, PUT, DELETE, (PATCH)
- - [ ] Uniform interface
+ - [x] Interaction with resources through verbs like POST, GET, PUT, DELETE, (PATCH)
+ - [x] Uniform interface
  - [ ] [HATEOAS (Hypermedia As The Engine of Application State)](https://en.wikipedia.org/wiki/HATEOAS)
-## Endpoints
-- [x] POST api/tasks - Create new task
-- [x] PUT api/tasks/:id - Update task
-- [x] DELETE api/categories/:id - Delete task
-- [x] POST api/categories - Create new category
-- [x] PUT api/categories/:id - Update category
-- [x] DELETE api/categories/:id - Delete category
